@@ -1,0 +1,2 @@
+# flatpkmngr
+Flatpak manager
