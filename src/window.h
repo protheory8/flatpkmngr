@@ -16,10 +16,9 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <stdlib.h>
-#include "window.h"
+#ifndef WINDOW_H
+#define WINDOW_H
 
-int main(int argc, char **argv) {
-    run(argc, argv);
-    return EXIT_SUCCESS;
-}
+void run(int argc, char **argv);
+
+#endif // WINDOW_H
