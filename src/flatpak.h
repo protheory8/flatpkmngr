@@ -23,5 +23,6 @@
 
 FlatpakInstallation *get_flatpak_system_installation();
 FlatpakInstallation *get_flatpak_user_installation();
+GPtrArray *get_flatpak_apps(FlatpakInstallation *flatpak_installation);
 
 #endif // FLATPAK_H
