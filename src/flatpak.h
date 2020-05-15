@@ -16,10 +16,13 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <stdlib.h>
-#include "window.h"
+#ifndef FLATPAK_H
+#define FLATPAK_H
 
-int main(int argc, char **argv) {
-    run(argc, argv);
-    return EXIT_SUCCESS;
-}
+#include <flatpak/flatpak.h>
+
+FlatpakInstallation *get_flatpak_system_installation();
+FlatpakInstallation *get_flatpak_user_installation();
+GPtrArray *get_flatpak_apps(FlatpakInstallation *flatpak_installation);
+
+#endif // FLATPAK_H
