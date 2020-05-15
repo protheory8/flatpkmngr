@@ -19,10 +19,12 @@
 #include <gtk/gtk.h>
 #include "window.h"
 
+// Invoked when the window is closed.
 static void on_window_close() {
     gtk_main_quit();
 }
 
+// Starts up the Flatpkmngr.
 void run(int argc, char **argv) {
     gtk_init(&argc, &argv);
 
