@@ -21,4 +21,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please read [code of conduct](https://github.com/protheory8/flatpkmngr/blob/master/CODE_OF_CONDUCT.md) and [CONTRIBUTING.md](https://github.com/protheory8/flatpkmngr/blob/master/CONTRIBUTING.md) file before making pull requests or submitting issues.
 
 ## License
-Flatpkmngr is licensed under [GNU General Public License, version 3](https://github.com/protheory8/flatpkmngr/blob/master/COPYING)
+Flatpkmngr is licensed under [GNU General Public License v3.0](https://github.com/protheory8/flatpkmngr/blob/master/COPYING)
