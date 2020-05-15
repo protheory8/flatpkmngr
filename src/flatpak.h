@@ -21,6 +21,7 @@
 
 #include <flatpak/flatpak.h>
 
-FlatpakInstallation *get_flatpak_installation();
+FlatpakInstallation *get_flatpak_system_installation();
+FlatpakInstallation *get_flatpak_user_installation();
 
 #endif // FLATPAK_H

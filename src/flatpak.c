@@ -19,13 +19,27 @@
 #include "flatpak.h"
 #include <stdio.h>
 
-FlatpakInstallation *get_flatpak_installation() {
+FlatpakInstallation *get_flatpak_system_installation() {
+    GError *err = NULL;
+    FlatpakInstallation *flatpak_installation = NULL;
+
+    flatpak_installation = flatpak_installation_new_system(NULL, &err);
+    if (err != NULL) {
+        fprintf(stderr, "Failed to get Flatpak installation: %s\n", err->message);
+        g_error_free(err);
+        exit(EXIT_FAILURE);
+    }
+
+    return flatpak_installation;
+}
+
+FlatpakInstallation *get_flatpak_user_installation() {
     GError *err = NULL;
     FlatpakInstallation *flatpak_installation = NULL;
 
     flatpak_installation = flatpak_installation_new_user(NULL, &err);
     if (err != NULL) {
-        sprintf(stderr, "Failed to get Flatpak installation: %s\n", err->message);
+        fprintf(stderr, "Failed to get Flatpak installation: %s\n", err->message);
         g_error_free(err);
         exit(EXIT_FAILURE);
     }
