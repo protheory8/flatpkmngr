@@ -18,23 +18,49 @@
 
 #include <gtk/gtk.h>
 #include "window.h"
+#include "flatpak.h"
 
 // Invoked when the window is closed.
 static void on_window_close() {
     gtk_main_quit();
 }
 
-// Starts up the Flatpkmngr.
-void run(int argc, char **argv) {
+// Adds app rows to app list box.
+void add_rows(GtkListBox *app_list, GPtrArray *apps) {
+    GtkWidget *global_row = gtk_list_box_row_new();
+    gtk_container_add(GTK_CONTAINER(global_row), gtk_label_new("Global"));
+    gtk_list_box_insert(app_list, global_row, -1);
+
+    for (guint i = 0; i < apps->len; i++) {
+        GtkWidget *row = gtk_list_box_row_new();
+        GtkWidget *text = gtk_label_new(flatpak_installed_ref_get_appdata_name(g_ptr_array_index(apps, i)));
+        gtk_container_add(GTK_CONTAINER(row), text);
+        gtk_list_box_insert(app_list, row, -1);
+    }
+}
+
+// Starts up Flatpkmngr
+void init(int argc, char **argv) {
+    FlatpakInstallation *flatpak_installation = get_flatpak_system_installation();
+    GPtrArray *apps = get_flatpak_apps(flatpak_installation);
+
     gtk_init(&argc, &argv);
 
     GtkBuilder *builder = gtk_builder_new_from_file("flatpkmngr_window.ui");
     GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
+    GtkWidget *app_list = GTK_WIDGET(gtk_builder_get_object(builder, "app_list"));
 
     gtk_window_set_default_size(GTK_WINDOW(window), 600, 300);
+
+    add_rows(GTK_LIST_BOX(app_list), apps);
 
     g_signal_connect(window, "delete_event", G_CALLBACK(on_window_close), NULL);
 
     gtk_widget_show_all(window);
+}
+
+// A function which is running when the entire programs lifetime.
+void run(int argc, char **argv) {
+    init(argc, argv);
     gtk_main();
 }
