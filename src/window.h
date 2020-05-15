@@ -1,5 +1,5 @@
 /*
-    Flatpkmngr - a flatpak manager.
+    Flatpkmngr - GUI Flatpak manager.
     Copyright © 2020 The Flatpkmngr Contributors
 
     This program is free software: you can redistribute it and/or modify
