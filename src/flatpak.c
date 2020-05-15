@@ -46,3 +46,11 @@ FlatpakInstallation *get_flatpak_user_installation() {
 
     return flatpak_installation;
 }
+
+GPtrArray *get_flatpak_apps(FlatpakInstallation *flatpak_installation) {
+    GError *err = NULL;
+    GPtrArray *arr = NULL;
+    arr = flatpak_installation_list_installed_refs_by_kind(flatpak_installation, FLATPAK_REF_KIND_APP, NULL, &err);
+
+    return arr;
+}
