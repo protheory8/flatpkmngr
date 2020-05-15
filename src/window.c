@@ -16,10 +16,23 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <stdlib.h>
 #include "window.h"
+#include <gtk/gtk.h>
 
-int main(int argc, char **argv) {
-    run(argc, argv);
-    return EXIT_SUCCESS;
+static void on_window_close() {
+    gtk_main_quit();
+}
+
+void run(int argc, char **argv) {
+    gtk_init(&argc, &argv);
+
+    GtkBuilder *builder = gtk_builder_new_from_file("flatpkmngr_window.ui");
+    GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
+
+    gtk_window_set_default_size(GTK_WINDOW(window), 600, 300);
+
+    g_signal_connect(window, "delete_event", G_CALLBACK(on_window_close), NULL);
+
+    gtk_widget_show_all(window);
+    gtk_main();
 }
