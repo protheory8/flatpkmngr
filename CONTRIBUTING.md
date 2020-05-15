@@ -2,7 +2,7 @@
 
 Thank you for considering contributing to Flatpkmngr.
 
-There are many ways to contribute to Flatpkmngr, for example you can submit bug reports, write code or modify code comments to make them more clearer.
+There are many ways to contribute to Flatpkmngr, for example you can submit bug reports, write code or modify code comments to make them more clear.
 
 When contributing, please follow this guidelines:
 
