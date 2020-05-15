@@ -16,8 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "window.h"
 #include <gtk/gtk.h>
+#include "window.h"
 
 static void on_window_close() {
     gtk_main_quit();

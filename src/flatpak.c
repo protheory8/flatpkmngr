@@ -16,8 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "flatpak.h"
 #include <stdio.h>
+#include "flatpak.h"
 
 FlatpakInstallation *get_flatpak_system_installation() {
     GError *err = NULL;
