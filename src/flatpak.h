@@ -16,13 +16,18 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef FLATPAK_H
-#define FLATPAK_H
+#ifndef __FLATPKMNGR_FLATPAK_H__
+#define __FLATPKMNGR_FLATPAK_H__
 
 #include <flatpak/flatpak.h>
+
+typedef enum FlatpakRefSystemOrUser {
+    FLATPAK_REF_SYSTEM_APP,
+    FLATPAK_REF_USER_APP
+} FlatpakRefSystemOrUser;
 
 FlatpakInstallation *get_flatpak_system_installation();
 FlatpakInstallation *get_flatpak_user_installation();
 GPtrArray *get_flatpak_apps(FlatpakInstallation *flatpak_installation);
 
-#endif // FLATPAK_H
+#endif // __FLATPKMNGR_FLATPAK_H__

@@ -19,10 +19,7 @@
 #include <stdio.h>
 #include "flatpak.h"
 
-// Gets a system installation of Flatpak, which is needed to get access to apps installed in system directories.
-//
-// Returns:
-// FlatpakInstallation.
+// Gets a system installation of Flatpak, which is needed to get access to user apps installed.
 FlatpakInstallation *get_flatpak_system_installation() {
     GError *err = NULL;
     FlatpakInstallation *flatpak_installation = NULL;
@@ -37,10 +34,7 @@ FlatpakInstallation *get_flatpak_system_installation() {
     return flatpak_installation;
 }
 
-// Gets a user installation of Flatpak, which is needed to get access to apps installed in user directories.
-//
-// Returns:
-// FlatpakInstallation.
+// Gets a user installation of Flatpak, which is needed to get access to system apps installed.
 FlatpakInstallation *get_flatpak_user_installation() {
     GError *err = NULL;
     FlatpakInstallation *flatpak_installation = NULL;
@@ -55,13 +49,6 @@ FlatpakInstallation *get_flatpak_user_installation() {
     return flatpak_installation;
 }
 
-// Gets flatpak apps, either using a system or user Flatpak installation.
-//
-// Args:
-// flatpak_installation - installation of flatpak which you can get by using get_flatpak_user_installation or get_flatpak_system_installation.
-//
-// Returns:
-// GPtrArray which contains FlatpakInstalledRef.
 GPtrArray *get_flatpak_apps(FlatpakInstallation *flatpak_installation) {
     GError *err = NULL;
     GPtrArray *arr = NULL;

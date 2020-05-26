@@ -16,27 +16,11 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include "window.h"
-#include "flatpak.h"
+#ifndef __FLATPKMNGR_UTILS_H__
+#define __FLATPKMNGR_UTILS_H__
 
-static void on_window_close() {
-    gtk_main_quit();
-}
+#include <gtk/gtk.h>
 
-Window window_init(int argc, char **argv) {
-    gtk_init(&argc, &argv);
+void add_apps_to_list_box(GtkListBox *list_box, GPtrArray *system_apps, GPtrArray *user_apps);
 
-    GtkBuilder *builder = gtk_builder_new_from_file("flatpkmngr_window.ui");
-    GtkWidget *gtk_window = GTK_WIDGET(gtk_builder_get_object(builder, "window"));
-    GtkWidget *app_list_box = GTK_WIDGET(gtk_builder_get_object(builder, "app_list_box"));
-
-    gtk_window_set_default_size(GTK_WINDOW(gtk_window), 600, 300);
-
-    g_signal_connect(gtk_window, "delete_event", G_CALLBACK(on_window_close), NULL);
-
-    Window window;
-    window.window = gtk_window;
-    window.app_list_box = app_list_box;
-
-    return window;
-}
+#endif // __FLATPKMNGR_UTILS_H__

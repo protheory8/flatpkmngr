@@ -16,9 +16,16 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef __FLATPKMNGR_WINDOW_H__
+#define __FLATPKMNGR_WINDOW_H__
 
-void run(int argc, char **argv);
+#include <gtk/gtk.h>
 
-#endif // WINDOW_H
+typedef struct Window {
+    GtkWidget *window;
+    GtkWidget *app_list_box;
+} Window;
+
+Window window_init(int argc, char **argv);
+
+#endif // __FLATPKMNGR_WINDOW_H__
