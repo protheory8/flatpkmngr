@@ -18,11 +18,10 @@
 
 #include "utils.h"
 #include "flatpak.h"
-#include <flatpak/flatpak.h>
 
 void add_app_to_list_box(GtkListBox *list_box, FlatpakInstalledRef *app, FlatpakRefSystemOrUser system_or_user_app) {
-    const char* app_name = flatpak_installed_ref_get_appdata_name(app);
-    const char* app_system_or_user;
+    const char *app_name = get_flatpak_app_name(app);
+    const char *app_system_or_user = NULL;
 
     if (system_or_user_app == FLATPAK_REF_SYSTEM_APP) {
         app_system_or_user = "\n(System)";
@@ -30,7 +29,7 @@ void add_app_to_list_box(GtkListBox *list_box, FlatpakInstalledRef *app, Flatpak
         app_system_or_user = "\n(User)";
     }
 
-    char* app_row_text_str = calloc(strlen("<b>") + strlen(app_name) + strlen("</b>") + strlen(app_system_or_user) + 1, sizeof(char));
+    char *app_row_text_str = calloc(strlen("<b>") + strlen(app_name) + strlen("</b>") + strlen(app_system_or_user) + 1, sizeof(char));
     strcpy(app_row_text_str, "<b>");
     strcat(app_row_text_str, app_name);
     strcat(app_row_text_str, "</b>");

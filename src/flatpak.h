@@ -29,5 +29,7 @@ typedef enum FlatpakRefSystemOrUser {
 FlatpakInstallation *get_flatpak_system_installation();
 FlatpakInstallation *get_flatpak_user_installation();
 GPtrArray *get_flatpak_apps(FlatpakInstallation *flatpak_installation);
+const char *get_flatpak_app_id(FlatpakRef *flatpak_app);
+const char *get_flatpak_app_name(FlatpakInstalledRef *flatpak_app);
 
 #endif // __FLATPKMNGR_FLATPAK_H__

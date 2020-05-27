@@ -53,6 +53,24 @@ GPtrArray *get_flatpak_apps(FlatpakInstallation *flatpak_installation) {
     GError *err = NULL;
     GPtrArray *arr = NULL;
     arr = flatpak_installation_list_installed_refs_by_kind(flatpak_installation, FLATPAK_REF_KIND_APP, NULL, &err);
+    if (err != NULL) {
+        fprintf(stderr, "Failed to get Flatpak apps: %s\n", err->message);
+        g_error_free(err);
+        exit(EXIT_FAILURE);
+    }
 
     return arr;
+}
+
+const char *get_flatpak_app_id(FlatpakRef *flatpak_app) {
+    return flatpak_ref_get_name(flatpak_app);
+}
+
+const char *get_flatpak_app_name(FlatpakInstalledRef *flatpak_app) {
+    const char *friendly_name = flatpak_installed_ref_get_appdata_name(flatpak_app);
+    if (friendly_name == NULL) {
+        return get_flatpak_app_id(FLATPAK_REF(flatpak_app));
+    }
+
+    return friendly_name;
 }
